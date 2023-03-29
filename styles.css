@@ -1,12 +1,30 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  background-color: rgb(235, 239, 242);
+}
+
+header {
+  background: white;
+  position: relative;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
 .hidden {
   display: none;
 }
 
-.library {
+#library {
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
   grid-auto-rows: 300px;
+
 }
 
 .modal {
@@ -23,10 +41,21 @@
   background: gainsboro;
 }
 
-form {
+form,
+.book {
   display: grid;
   justify-items: center;
   justify-content: center;
+}
+
+.book {
+  border-radius: 8px;
+  background: white;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+
+.book-property {
+  font-size: 16px;
 }
 
 .input-container {
