@@ -10,6 +10,7 @@ const isReadElem = document.querySelector("#read");
 const submit = document.querySelector("#submit");
 
 let myLibrary = [];
+let readButtons = document.querySelectorAll(".prop-read");
 let removeButtons = document.querySelectorAll(".prop-remove");
 
 function Book(title = "N/A", author = "N/A", pageCount = 0, isRead = false) {
@@ -31,8 +32,25 @@ const removeBook = (e) => {
   myLibrary = myLibrary.filter((book) => book.title !== titleText);
   divToRemove.remove();
 };
+
 removeButtons.forEach((button) => {
   button.addEventListener("click", removeBook);
+});
+
+const toggleRead = (e) => {
+  const clickedButton = e.target;
+  const clickedBook = clickedButton.parentElement;
+  const titleOfBook = clickedBook.querySelector(".prop-title");
+  const titleText = titleOfBook.textContent;
+  const libBook = myLibrary.find((book) => book.title === titleText);
+  libBook.isRead = !libBook.isRead;
+  clickedButton.classList.toggle("is-read");
+  const content = libBook.isRead ? "Read" : "Not read";
+  clickedButton.textContent = content;
+};
+
+readButtons.forEach((button) => {
+  button.addEventListener("click", toggleRead);
 });
 
 const toggleModal = () => {
@@ -47,13 +65,6 @@ const visualizeBook = (book) => {
   const bookPages = document.createElement("h4");
   const bookRead = document.createElement("button");
   const bookRemove = document.createElement("button");
-  const isReadText = book.isRead ? "Read" : "Not read";
-
-  bookTitle.textContent = book.title;
-  bookAuthor.textContent = book.author;
-  bookPages.textContent = `${book.pageCount} pages`;
-  bookRead.textContent = isReadText;
-  bookRemove.textContent = "Remove";
 
   bookDiv.classList.add("book");
   bookTitle.classList = "book-property prop-title";
@@ -61,6 +72,20 @@ const visualizeBook = (book) => {
   bookPages.classList = "book-property prop-pages";
   bookRead.classList = "book-button prop-read";
   bookRemove.classList = "book-button prop-remove";
+
+  bookTitle.textContent = book.title;
+  bookAuthor.textContent = book.author;
+  bookPages.textContent = `${book.pageCount} pages`;
+
+  let isReadText;
+  if (book.isRead) {
+    isReadText = "Read";
+    bookRead.classList.add("is-read");
+  } else {
+    isReadText = "Not read";
+  }
+  bookRead.textContent = isReadText;
+  bookRemove.textContent = "Remove";
 
   bookDiv.appendChild(bookTitle);
   bookDiv.appendChild(bookAuthor);
@@ -76,6 +101,10 @@ const rebuildVisual = () => {
   removeButtons = document.querySelectorAll(".prop-remove");
   removeButtons.forEach((button) => {
     button.addEventListener("click", removeBook);
+  });
+  readButtons = document.querySelectorAll(".prop-read");
+  readButtons.forEach((button) => {
+    button.addEventListener("click", toggleRead);
   });
 };
 

@@ -8,13 +8,22 @@ body {
   display: grid;
   grid-template-rows: 100px 1fr;
   background-color: rgb(235, 239, 242);
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 header {
   background: white;
   position: relative;
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+h1 {
+  margin: 10px;
+}
+
 .hidden {
   display: none;
 }
@@ -24,7 +33,7 @@ header {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
   grid-auto-rows: 300px;
-
+  gap: 20px;
 }
 
 .modal {
@@ -52,10 +61,16 @@ form,
   border-radius: 8px;
   background: white;
   box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  padding: 0 10px 10px;
 }
 
 .book-property {
-  font-size: 16px;
+  font-size: 14px;
+  height: 20px;
+}
+
+.prop-title {
+  font-style: italic;
 }
 
 .input-container {
@@ -63,14 +78,14 @@ form,
   display: grid;
   justify-items: center;
   gap: 20px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 input[type=text],
 input[type=number] {
   height: 30px;
   width: 100%;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .title-container {
@@ -79,8 +94,9 @@ input[type=number] {
 
 .duplicate-error {
   color: red;
-  width: 100%;
+  width: 200px;
   height: 20px;
+  font-size: 12px;
 }
 
 .read-container {
@@ -94,20 +110,61 @@ input[type=checkbox] {
   transform: scale(1.7);
 }
 
-#submit {
-  height: 40px;
-  width: 100%;
-  color: #F6F7F8;
-  background-color: rgb(27, 41, 55);
-  border: 1px solid rgb(15, 23, 31);
+#submit,
+.book-button,
+#add-book {
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
+  color: #F6F7F8;
 }
 
-#submit:hover {
+#submit,
+.book-button {
+  height: 40px;
+}
+
+#submit,
+#add-book,
+.prop-remove {
+  background-color: rgb(27, 41, 55);
+  border: 1px solid rgb(15, 23, 31);
+}
+
+#submit:hover,
+#add-book:hover,
+.prop-remove:hover {
   background:rgb(28, 59, 90);
-  border: 2px solid rgb(27, 41, 55);
+  border: 1px solid rgb(27, 41, 55);
+}
+
+#add-book,
+.book-button {
+  width: 200px;
+}
+
+#submit {
+  width: 100%;
+}
+
+.prop-read {
+  background: rgb(198, 53, 53);
+  border: 1px solid rgb(160, 31, 31);
+}
+
+.prop-read:hover {
+  background: rgb(238, 59, 59);
+  border: 1px solid rgb(194, 39, 39);
+}
+
+.prop-read.is-read {
+  background: green;
+  border: 1px solid green;
+}
+
+.prop-read.is-read:hover {
+  background: rgb(23, 171, 23);
+  border: 1px solid rgb(12, 156, 12);
 }
 
 #overlay {
