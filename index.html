@@ -8,26 +8,24 @@
     <title>Library</title>
   </head>
   <body>
-      <header>
-        <h1>La Biblioteca</h1>
-        <button id="add-book">ADD</button>
-      </header>
-			<div class="container">
-				<div id="library"></div>
-			</div>
+    <header>
+      <h1>La Biblioteca</h1>
+      <button id="add-book">ADD</button>
+    </header>
+    <div id="library"></div>
     <div class="modal hidden" id="add-book-modal">
       <form action method="get">
         <h3>Add a book to your collection</h3>
+				<span class="duplicate-error"></span>
         <div class="input-container">
-          <input
-            type="text"
-            name="title"
-            id="title"
-            title="Please enter book title."
-            placeholder="Title"
-            required
-          />
-
+            <input
+              type="text"
+              name="title"
+              id="title"
+              title="Please enter book title."
+              placeholder="Title"
+              required
+            />
           <input
             type="text"
             name="author"
